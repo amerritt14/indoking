@@ -4,7 +4,7 @@ lock "~> 3.11.0"
 set :application, "indoking"
 set :repo_url, "git@github.com:amerritt14/indoking.git"
 
-set :deploy_to, "/home/deploy/my_app_name"
+set :deploy_to, "/home/deploy/indoking"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
