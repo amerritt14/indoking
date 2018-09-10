@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "pathname"
+require "fileutils"
+require "date"
+
+# path to your app root.
+APP_ROOT = Pathname.new File.expand_path("../../", __FILE__)
+
+# This app is currently only deployed in production env.
+env = ARGV[0] || "staging"
+branch = ARGV[1] || "staging"
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+def tag_build
+  puts "\n== Tagging deploy =="
+
+  system "git fetch --tags"
+  date = Date.today.strftime("%Y-%m-%d")
+  tagname = "#{date}."
+
+  # Find and count existing tags for today to get the next tag suffix.
+  # e.g.
+  # 2014-07-10.01
+  # 2014-07-10.02
+  # => next tag is 2014-07-10.03
+  existing = `git tag --list | grep #{tagname}`
+  nexttag = existing.split("\n").size + 1
+  suffix = format("%02d", nexttag)
+
+  system "git tag #{date}.#{suffix}"
+  system "git push --tags origin master"
+end
+
+Dir.chdir APP_ROOT do
+  puts "\n== Deploying to #{env} ==\n"
+  branchArg = (env == "staging") ? " BRANCH=#{branch}" : ""
+  cmd = "bin/cap #{env}#{branchArg} deploy"
+  system! cmd
+
+  next unless env == "production"
+  tag_build
+end
