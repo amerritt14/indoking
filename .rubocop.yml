@@ -1,0 +1,123 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "db/seeds.rb"
+    - "db/migrate/*"
+    - "bin/**/*"
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Exclude:
+    - 'test/test_helper.rb'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/BlockLength:
+ Exclude:
+   - 'Rakefile'
+   - '**/*.rake'
+   - 'spec/**/*.rb'
+   - 'config/environments/*'
+   - 'config/routes.rb'
+   - 'test/**/*'
+   - 'db/migrate/**/*'
+
+Metrics/ClassLength:
+  Max: 120
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'test/**/*'
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'lib/capistrano/tasks/**/*'
+    - 'lib/tasks/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'test/**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'lib/linters/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Description: 'Use `%`-literal delimiters consistently'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-literal-braces'
+  Enabled: true
+  PreferredDelimiters:
+    default: ()
+    '%i': '()'
+    '%I': '()'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '()'
+
+Style/RescueModifier:
+  Exclude:
+    - 'lib/capistrano/tasks/**/*'
+    - 'lib/tasks/**/*'
+
+Style/RescueStandardError:
+  Exclude:
+    - 'lib/capistrano/tasks/**/*'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Exclude:
+    - 'Gemfile'
+    - 'Gemfile.lock'
+
+Style/SymbolArray:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Style/TrailingCommaInArguments:
+  # If `comma`, the cop requires a comma after the last argument, but only for
+  # parenthesized method calls where each argument is on its own line.
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  # If `comma`, the cop requires a comma after the last item in an array,
+  # but only when each item is on its own line.
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  # If `comma`, the cop requires a comma after the last item in a hash,
+  # but only when each item is on its own line.
+  EnforcedStyleForMultiline: comma
