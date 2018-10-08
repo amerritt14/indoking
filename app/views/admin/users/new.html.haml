@@ -1,0 +1,27 @@
+- @page_title = "Signup"
+.row.justify-content-center
+  .col-md-6
+    .card.mx-auto.mt-5.p-5.shadow
+      %h1.text-center Sign Up
+      = form_for [:admin, @user] do |f|
+        .form-group
+          = f.label :first_name
+          = f.text_field :first_name, class: "form-control"
+        .form-group
+          = f.label :last_name
+          = f.text_field :last_name, class: "form-control"
+        .form-group
+          = f.label :email
+          = f.text_field :email, class: "form-control"
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: "form-control"
+        .form-group
+          = f.label :confirm_password
+          = f.password_field :password_confirmation, class: "form-control"
+        = f.submit "Create Account"
+      - if @user.errors.any?
+        %ul.Signup_Errors
+          - for message_error in @user.errors.full_messages
+            %li
+              * #{message_error}

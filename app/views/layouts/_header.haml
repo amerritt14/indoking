@@ -1,0 +1,6 @@
+.row.p-2
+  .col.pr-5.d-flex.justify-content-end
+    - if current_user
+      %h6= "Logged in as #{current_user.name}. #{link_to "Log out", login_path, method: :delete}".html_safe
+    - else
+      %h6= link_to "Log in", login_path
