@@ -4,6 +4,7 @@
 require "pathname"
 require "fileutils"
 require "date"
+require "yaml"
 
 # path to your app root.
 APP_ROOT = Pathname.new File.expand_path("../../", __FILE__)
@@ -11,6 +12,12 @@ APP_ROOT = Pathname.new File.expand_path("../../", __FILE__)
 # This app is currently only deployed in production env.
 env = ARGV[0] || "staging"
 branch = ARGV[1] || "staging"
+
+# Set variables for notifying Rollbar about the deploy
+ACCESS_TOKEN = YAML.load_file("config/rollbar.yml")["ROLLBAR_ACCESS_TOKEN"]
+ENVIRONMENT = env
+LOCAL_USERNAME = `whoami`.chomp
+REVISION = `git rev-parse --verify HEAD`
 
 def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
@@ -36,6 +43,15 @@ def tag_build
   system "git push --tags origin master"
 end
 
+def log_deploy
+  puts "\n== Logging deploy =="
+  system "curl https://api.rollbar.com/api/1/deploy/ \
+    -F access_token=#{ACCESS_TOKEN} \
+    -F environment=#{ENVIRONMENT} \
+    -F revision=#{REVISION} \
+    -F local_username=#{LOCAL_USERNAME}"
+end
+
 Dir.chdir APP_ROOT do
   puts "\n== Deploying to #{env} ==\n"
   branchArg = (env == "staging") ? " BRANCH=#{branch}" : ""
@@ -44,4 +60,5 @@ Dir.chdir APP_ROOT do
 
   next unless env == "production"
   tag_build
+  log_deploy
 end
