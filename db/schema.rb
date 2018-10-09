@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181009105847) do
+ActiveRecord::Schema.define(version: 20181009113642) do
+
+  create_table "product_variants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sync_product_id"
+    t.integer  "printful_id"
+    t.integer  "printful_product_id"
+    t.string   "name"
+    t.integer  "variant_id"
+    t.decimal  "retail_price",        precision: 6, scale: 2
+    t.string   "currency"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "printful_id"
@@ -27,6 +39,27 @@ ActiveRecord::Schema.define(version: 20181009105847) do
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "variant_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_varient_id"
+    t.integer  "printful_id"
+    t.string   "type"
+    t.string   "hash"
+    t.string   "url"
+    t.string   "filename"
+    t.string   "mime_type"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "dpi"
+    t.string   "status"
+    t.integer  "created"
+    t.string   "thumbnail_url"
+    t.string   "preview_url"
+    t.boolean  "visible"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
