@@ -24,7 +24,7 @@ set :deploy_to, "/home/deploy/indoking"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml", "config/printful.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml", "config/printful.yml", "config/rollbar.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
