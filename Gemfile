@@ -8,6 +8,7 @@ end
 
 gem "bcrypt"
 gem "bootstrap"
+gem "faraday"
 gem "haml-rails"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
@@ -38,6 +39,7 @@ end
 
 group :test do
   gem "vcr", "~> 4.0.0"
+  gem "webmock"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
