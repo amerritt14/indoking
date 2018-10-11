@@ -10,6 +10,10 @@ Ruby version 2.5.1
 
 Product seedfile has not been created yet.
 
+### Testing
+
+Tests are run automatically using Travis CI
+
 ## Contributing
 
 * Clone the repo
