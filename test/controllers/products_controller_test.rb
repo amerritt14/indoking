@@ -3,6 +3,7 @@ require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    login(users(:admin))
     @product = products(:one)
   end
 

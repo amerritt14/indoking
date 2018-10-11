@@ -11,7 +11,7 @@ module ActiveSupport
     fixtures :all
 
     def login(user)
-      post login_url, params: { email: user.email }
+      post login_url, params: { session: { email: user.email } }
     end
 
     VCR.configure do |config|

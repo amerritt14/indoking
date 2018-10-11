@@ -3,8 +3,12 @@
 require "test_helper"
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    login(users(:admin))
+  end
+
   test "should get new" do
-    get sessions_new_url
+    get login_url
     assert_response :success
   end
 end
