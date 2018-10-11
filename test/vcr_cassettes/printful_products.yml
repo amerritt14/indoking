@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.printful.com/sync/products
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic OGs1Zno3Y2stNGRvbC1yZjBmOnl5ZjYtZ2d0bWR2eDQyeHpo
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 11 Oct 2018 11:48:21 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"code":200,"result":[{"id":81975827,"external_id":"5bb76c4ae0e4b4","name":"Hooded
+        Sweatshirt","variants":23,"synced":23},{"id":81975784,"external_id":"5bb76c21750039","name":"Hooded
+        Sweatshirt","variants":22,"synced":22},{"id":81975693,"external_id":"5bb76ba3005834","name":"Trucker
+        Cap","variants":6,"synced":6},{"id":81975495,"external_id":"5bb76b4bdc3432","name":"Trucker
+        Cap","variants":3,"synced":3},{"id":81975405,"external_id":"5bb76ad7c3d1a3","name":"Short
+        sleeve t-shirt","variants":105,"synced":105},{"id":81975324,"external_id":"5bb76a9bcbf485","name":"Short
+        sleeve t-shirt","variants":35,"synced":35}],"extra":[],"paging":{"total":6,"offset":0,"limit":20}}'
+    http_version: 
+  recorded_at: Thu, 11 Oct 2018 11:48:22 GMT
+recorded_with: VCR 4.0.0

@@ -4,7 +4,6 @@ module Api
   module Printful
     class Base
       require "net/http"
-      require "net/https"
 
       API_KEY = YAML.load_file("config/printful.yml")["api_key"]
       ENDPOINT_URL = YAML.load_file("config/printful.yml")["endpoint_url"]
@@ -14,7 +13,7 @@ module Api
       end
 
       def perform
-        uri(endpoint_path)# initialize uri
+        uri(endpoint_path) # initialize uri
         response = http.start do |http|
           http.request(api_request)
         end
