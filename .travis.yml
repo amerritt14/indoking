@@ -1,6 +1,11 @@
 language: ruby
 rvm:
   - 2.5.1
+before_script:
+    - cp config/rollbar.yml.example config/rollbar.yml
+    - cp config/database.yml.example config/database.yml
+    - cp config/printful.yml.example config/printful.yml
+    - cp config/secrets.yml.example config/secrets.yml
 script:
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rails test
