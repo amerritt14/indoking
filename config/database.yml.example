@@ -13,6 +13,8 @@ development:
 test:
   <<: *default
   database: db/test
+  username: travis
+  encoding: utf8
 
 production:
   <<: *default

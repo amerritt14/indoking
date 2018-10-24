@@ -1,6 +1,10 @@
 language: ruby
 rvm:
   - 2.5.1
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS  db/test;'
 before_script:
     - cp config/rollbar.yml.example config/rollbar.yml
     - cp config/database.yml.example config/database.yml
