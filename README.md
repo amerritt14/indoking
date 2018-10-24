@@ -8,7 +8,7 @@ Ruby version 2.5.1
 
 ### Seeding the Database
 
-Product seedfile has not been created yet.
+Product seedfile for development has not been created yet. Products rely on the Printful API in production.
 
 ### Testing
 
