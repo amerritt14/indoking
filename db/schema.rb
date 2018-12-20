@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181009113642) do
+ActiveRecord::Schema.define(version: 20181220000723) do
 
   create_table "product_variants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "sync_product_id"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20181009113642) do
     t.string   "currency"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.integer  "external_id"
+    t.integer  "product_id"
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -31,6 +33,7 @@ ActiveRecord::Schema.define(version: 20181009113642) do
     t.datetime "updated_at",  null: false
     t.integer  "variants"
     t.integer  "synced"
+    t.integer  "external_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -44,10 +47,10 @@ ActiveRecord::Schema.define(version: 20181009113642) do
   end
 
   create_table "variant_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "product_varient_id"
+    t.integer  "product_variant_id"
     t.integer  "printful_id"
-    t.string   "type"
-    t.string   "hash"
+    t.string   "printful_type"
+    t.string   "printful_hash"
     t.string   "url"
     t.string   "filename"
     t.string   "mime_type"

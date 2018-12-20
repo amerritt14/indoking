@@ -10,6 +10,8 @@ Ruby version 2.5.1
 
 Product seedfile for development has not been created yet. Products rely on the Printful API in production.
 
+Running `Sync::Products.perform` from the command line will fill the product tables (if the API is set up correctly)
+
 ### Testing
 
 Tests are run automatically using Travis CI
