@@ -3,10 +3,10 @@
 require "test_helper"
 
 module Syncs
-  class Products < ActionDispatch::IntegrationTest
+  class ProductsTest < ActionDispatch::IntegrationTest
     test "perform will sync products" do
       VCR.use_cassette("sync_products") do
-        assert_difference "Product.count" do
+        assert_difference "Product.count", 6 do
           Sync::Products.perform
         end
       end
@@ -14,7 +14,7 @@ module Syncs
 
     test "perform will sync product variants" do
       VCR.use_cassette("sync_products") do
-        assert_difference "ProductVariant.count" do
+        assert_difference "ProductVariant.count", 194 do
           Sync::Products.perform
         end
       end
